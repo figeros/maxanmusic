@@ -1,0 +1,167 @@
+
+body {
+    font-family: Verdana;
+    display: flex;
+    flex-direction: column;
+    margin:0;
+    background-color:  #eeeeee;   
+    min-height: 100vh; 
+}
+
+header , footer {
+    background-color:  #b82424;   
+    padding: 30px;
+    color: white;
+}
+
+.baslik {
+    text-align: center;
+}
+
+footer {
+    height: auto;
+}
+
+header > div {
+    width: 80%;
+    margin: auto;
+}
+
+
+
+main {
+    padding-top: 20px;
+    padding-bottom: 50px;
+    color: black;
+    margin: auto;
+    width: 75%;
+    flex: 1 ;    
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+nav {    
+    background-color: #b82424;
+    font-family: Arial;
+    display: flex;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+  }
+  
+  /* Links inside the navbar */
+nav a {
+    float: left;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    
+}
+
+nav button{
+    background-color: #b82424;
+  border: none;
+  color: white;
+  padding: 14px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+  
+  /* The dropdown container */
+.dropdown {
+    float: left;
+    overflow: hidden;
+    /*visibility: visible;*/
+    display: none;
+}
+
+.giris{
+    /*visibility: visible;*/
+    display: block;
+}
+
+.anasayfa{
+    visibility: hidden;
+    
+}
+  
+  /* Dropdown button */
+.dropdown .dropbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit; /* Important for vertical align on mobile phones */
+    margin: 0; /* Important for vertical align on mobile phones */
+ }
+  
+  /* Add a red background color to navbar links on hover */
+nav a:hover, .dropdown:hover .dropbtn, button:hover {
+    background-color: #ff3535;
+}
+  
+  /* Dropdown content (hidden by default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    /*right: 0;*/
+    background-color: #f9f9f9;
+    min-width: 160px;
+}
+  
+  /* Links inside the dropdown */
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+  
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+  
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+  
+nav input[type=text] {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: none;
+}
+
+  
+#araBtn {
+    float: right;
+    padding: 6px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #ff3535;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+  
+#araBtn:hover {
+    background: #ff6767;
+}
+
