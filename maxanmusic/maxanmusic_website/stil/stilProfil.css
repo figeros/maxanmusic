@@ -1,0 +1,199 @@
+
+.profilBaslik{
+    width: 100%;
+    height: 200px;
+    background-color: #bbbbbb;
+    display: flex;
+    flex-direction: row;
+    color: black;
+    padding: 2px;
+}
+
+.pfoto{
+    width: 20%;
+    padding: 10px;
+}
+
+.pfotocerceve{
+    aspect-ratio: 1/1;
+    height: 100%;
+}
+
+.pfotocerceve > img {   
+    object-fit: fill;
+    width: 100%;
+    height: 100%;
+}
+
+.kullanici{
+    width: 55%;
+}
+
+
+.k_Ad{
+    height: 20%;
+    padding-left: 10px;
+}
+
+.k_Aciklama{
+    height: 60%;
+    padding: 10px;
+    overflow: hidden;
+    word-wrap: break-word;
+}
+
+.takip{
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+}
+
+.takipIc{
+    display: flex;
+    flex-direction: row;
+    max-height: 60%;
+    padding-top: 5%;
+}
+
+.takipIc > div{
+    width: 65%;
+    text-align: center;
+}
+
+.phbc{
+    max-height: 40%;    
+    height: 40%;
+    padding: 5%;
+}
+
+.phbtn{
+    width: 100%;
+    height: 100%;
+    font-size: 20px;
+    border: 1px solid black;
+    cursor: pointer;
+    background-color: #dddddd;
+}
+
+.phbtn:hover{
+    background-color: #eeeeee;
+}
+
+#PDuzenle{
+    display: none;
+}
+
+.icerik{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10px;
+    
+}
+
+.parca{
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    background-color: #ff9999;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.pbilgiler{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.parcakapakfoto{
+    width: 20%;
+    padding: 10px;
+}
+
+.pkfcerceve{
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pkfcerceve > img {
+    aspect-ratio: 1/1;
+    object-fit: fill;
+    width: 100%;
+    height: 100%;
+}
+
+.pbilgi_ad{
+    height: 70%;
+    margin: auto;
+    width: 95%;
+    padding-left: 5%;
+    text-align: left;
+}
+
+.pbilgi_istatistik{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 30%;
+}
+
+.pbilgi_begeni{
+    width: 50%;
+}
+
+.pbilgi_yorum{
+    width: 50%;
+}
+
+.ekranDuzenle {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 70px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+  
+.ed_icerik {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #cccccc;
+    margin: auto;
+    margin-top: auto;
+    padding: 20px;
+    width: 80%;
+}
+.ekranButonlar{
+    display: flex;
+    flex-direction: row;
+}
+  
+.ekranButonlar > button{
+    background-color: #b82424;
+    color: white;
+    padding: 14px 20px;
+    margin: auto;
+    border: none;
+    cursor: pointer;
+    width: 25%;
+}
+
+#ed_udesc{
+    height: 100px;
+    width: 100%;
+    font-size: 16;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    padding: 10px;
+    resize: none;
+  }

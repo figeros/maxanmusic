@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>
+        MaxanMusic
+    </title>
+
+    <link rel="stylesheet" href="https://maxanmusicbucket.s3.eu-central-1.amazonaws.com/sytle/stil.css">
+    <link rel="stylesheet" href="https://maxanmusicbucket.s3.eu-central-1.amazonaws.com/sytle/stilProfil.css">
+
+</head>
+
+<body>
+    <nav>
+        <a id="index">MaxanMusic</a>
+        <a id="anasayfa">Ana Sayfa</a>
+        <div class="arama">
+            <input type="text" placeholder="Parça ya da Kullanıcı.." name="search" id="arainput">
+            <button class="submit" id="araBtn">Ara</button>
+        </div>
+        <div class="dropdown">
+          <button class="dropbtn">
+            Sen
+          </button>
+          <div class="dropdown-content">
+            <a id="profilim">Profilim</a>
+            <a id="studyo">Stüdyo</a>
+            <a id="bgnprclr">Beğendiğim Parçalar</a>
+            <a id="cikis">Çıkış Yap</a>
+          </div>
+        </div>
+        <a id="giris" href="Giriş.html">Giriş Yap</a>
+    </nav>
+
+    <main>
+    
+    <div class="profilBaslik">
+        <div class="pfoto">
+          <div class="pfotocerceve">
+            <img id ="pp"></img>
+          </div>
+        </div>
+        <div class="kullanici">
+          <div class="k_Ad">
+            <h3 id="kullaniciAdi"></h3>
+          </div>
+          <div class="k_Aciklama">
+            <p id="hakkinda"></p>
+          </div>
+        </div>
+        <div class="takip">
+          <div class="takipIc">
+            <div>
+              <h4>Takipçi</h4>
+              <p id="takipciSayisi"></p>
+            </div>
+            <div>
+              <h4>Takip Edilen</h4>
+              <p id="takipEdilen"></p>
+            </div>
+          </div>
+          <div class="phbc">
+            <button class="phbtn" id="takipEt">Takip Et</button>
+            <button class="phbtn" id="PDuzenle">Profilini Düzenle</button>
+          </div>
+        </div>
+    </div> 
+    <div class="icerik">
+
+    </div>  
+
+    </main>
+
+    <footer>
+    </footer>
+
+    <div class="ekranDuzenle">
+      <div class="ed_icerik">
+      
+
+        <label><b>Kullanıcı Açıklaması</b></label>
+        <textarea placeholder="Parça Açıklaması" id="ed_udesc" maxlength="255"></textarea>
+
+        <label><b>Profil Resmi(.png)</b></label>
+        <input type="file" id="ed_pffile" accept="image/png">
+              
+        <div class="ekranButonlar">
+          <button id="ed_p">Kaydet</button>
+          <button id="ed_n">İptal</button>
+        </div>
+      </div>
+    </div>
+
+</body>
+
+<script src="navbar.js"></script>
+<script src="profil.js"></script>
+
+</html>
