@@ -11,8 +11,14 @@ public class CorsConfiguration implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("http://localhost:8080") //site portunu 8080 yap
+                .allowedOrigins("http://localhost:8080")
                 .allowCredentials(true)
-                .allowedMethods("GET", "POST","DELETE","PUT");
+                .allowedMethods("GET", "POST","DELETE","PUT","PATCH");
     }
 }
+
+// web tarayıcılarının CORS saldırısına karşı erişimi engellediğinden
+// sadece yerel web sunucusuna cevap verecek şekilde ayarlandı
+
+//.allowedOrigins("http://ec2-3-66-170-217.eu-central-1.compute.amazonaws.com")
+//.allowedOrigins("http://localhost:8080")

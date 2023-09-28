@@ -45,22 +45,22 @@ public class User {
     @Column(name = "aboutuser")
     private String aboutuser = "";
 
-    @OneToMany(mappedBy="artist")
+    @OneToMany(mappedBy="artist",cascade = CascadeType.ALL,orphanRemoval = true)
     private Collection<Track> UserTracks;
 
-    @OneToMany(mappedBy = "commentor")
+    @OneToMany(mappedBy = "commentor",cascade = CascadeType.ALL,orphanRemoval = true)
     private Collection<Comment> comments;
 
-    @OneToMany(mappedBy= "userLiked")
+    @OneToMany(mappedBy= "userLiked",cascade = CascadeType.ALL,orphanRemoval = true)
     private Collection<Likes> UserLikes;
 
-    @OneToMany(mappedBy="userFollows")
+    @OneToMany(mappedBy="userFollows",cascade = CascadeType.ALL,orphanRemoval = true)
     private Collection<Follow> followedUsers;
 
-    @OneToMany(mappedBy="userFollowed")
+    @OneToMany(mappedBy="userFollowed",cascade = CascadeType.ALL,orphanRemoval = true)
     private Collection<Follow> followers;
 
-    @OneToMany(mappedBy="user")
+    @OneToMany(mappedBy="playlistCreator",cascade = CascadeType.ALL,orphanRemoval = true)
     private Collection<Playlist> playlists;
 
     public User(String username, String email, String password) {

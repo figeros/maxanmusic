@@ -30,7 +30,7 @@ public class Track {
     private String trackName;
 
     @JsonIgnore
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "Artist_Id")
     private User artist;
 
@@ -46,13 +46,13 @@ public class Track {
     @Column(name = "Date")
     private String submitDate;
 
-    @OneToMany(mappedBy = "commentedTrack")
+    @OneToMany(mappedBy = "commentedTrack",cascade = CascadeType.ALL,orphanRemoval = true)
     private Collection<Comment> comments;
 
-    @OneToMany(mappedBy = "trackLiked")
+    @OneToMany(mappedBy = "trackLiked",cascade = CascadeType.ALL,orphanRemoval = true)
     private Collection<Likes> trackLikes;
 
-    @OneToMany(mappedBy="track")
+    @OneToMany(mappedBy="track",cascade = CascadeType.ALL)
     private Collection<PlaylistTrack> playlistTracks;
 
 }

@@ -1,5 +1,6 @@
 package com.example.maxanmusic_webservice.Service;
 
+import com.example.maxanmusic_webservice.Entity.Comment;
 import com.example.maxanmusic_webservice.Entity.Likes;
 import com.example.maxanmusic_webservice.Entity.Track;
 import com.example.maxanmusic_webservice.Entity.User;
@@ -17,35 +18,38 @@ public class LikesService {
     private final UserRepository userRepository;
     private final LikesRepository likesRepository;
 
-    public Likes addLikes(Likes likes,Long id){
-        likes.setTrackLiked(trackRepository.findByTrackId(id));
-        likesRepository.save(likes);
-
-        User user = userRepository.findByUserid(likes.getUserLiked().getUserid());
-        user.getUserLikes().add(likes);
-        userRepository.save(user);
-
-        Track track = trackRepository.findByTrackId(id);
-        track.getTrackLikes().add(likes);
+    public Likes addLike(Long trackid,String username){
+        User user = userRepository.findByUsername(username);
+        Track track = trackRepository.findByTrackId(trackid);
+        Likes newlike = new Likes(user,track);
+        Likes savedlike = likesRepository.save(newlike);
         track.setLikeCount(track.getLikeCount()+1);
         trackRepository.save(track);
-        return likes;
+        return savedlike;
     }
 
-    public Likes deleteLikes(Long id){
-        Likes likes = likesRepository.findByLikeid(id);
+    public Likes getLike(Long trackid,String username){
+        User user = userRepository.findByUsername(username);
+        Track track = trackRepository.findByTrackId(trackid);
+        Likes currentLike = likesRepository.findByTrackLikedAndUserLiked(track,user);
+        if(currentLike!=null){
+            return currentLike;
+        }else return null;
+    }
 
-        User user = likesRepository.findByLikeid(id).getUserLiked();
-        user.getUserLikes().remove(likes);
-        userRepository.save(user);
 
-        Track track = likesRepository.findByLikeid(id).getTrackLiked();
-        track.getTrackLikes().remove(likes);
-        track.setLikeCount(track.getLikeCount()-1);
-        trackRepository.save(track);
-
-        likesRepository.delete(likes);
-
-        return likes;
+    public Boolean deleteLike(Long trackid,String username){
+        User user = userRepository.findByUsername(username);
+        Track track = trackRepository.findByTrackId(trackid);
+        if(user!=null&&track!=null) {
+            Likes currentLike = likesRepository.findByTrackLikedAndUserLiked(track, user);
+            if (currentLike != null) {
+                likesRepository.delete(currentLike);
+                track.setLikeCount(track.getLikeCount() - 1);
+                trackRepository.save(track);
+                return true;
+            }
+        }
+        return false;
     }
 }

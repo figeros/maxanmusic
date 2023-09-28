@@ -1,36 +1,50 @@
 package com.example.maxanmusic_webservice.Controller;
 
-import com.example.maxanmusic_webservice.Entity.Follow;
 import com.example.maxanmusic_webservice.Service.FollowService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/follow")
-@RequiredArgsConstructor
+@RequestMapping("/follows")
+@RequiredArgsConstructor    
 public class FollowController {
 
     private final FollowService followService;
 
-    @PostMapping("/{followed}/users/{follows}")
-    public ResponseEntity<?> followUser(@PathVariable Long followed,Long follows)
+    @PostMapping("")
+    public ResponseEntity<?> followUser(@RequestBody String followedUser, @CookieValue(name = "maxanmusicuser", defaultValue = "USER_NOT_FOUND") String followingUser)
     {
-        Follow follow = followService.follow(follows,followed);
-        if(follow!=null){
-            ResponseEntity.ok(follow);
-        }else ResponseEntity.badRequest().body("Kullanici Zaten Takip Ediliyor");
-        return null;
+
+        if(followingUser!="USER_NOT_FOUND") {
+            followService.follow(followedUser,followingUser);
+            return ResponseEntity.ok("");
+        }
+        return ResponseEntity.badRequest().body("");
     }
 
-    @DeleteMapping("/{followed}/users/{follows}")
-    public ResponseEntity<?> unfollowUser(@PathVariable Long followed,Long follows)
+    @GetMapping("")
+    public ResponseEntity<?> getfollow(@RequestParam String followedUser, @CookieValue(name = "maxanmusicuser", defaultValue = "USER_NOT_FOUND") String followingUser)
     {
-        Follow follow = followService.unfollow(followed,follows);
-        if(follow==null){
-            ResponseEntity.badRequest().body("Kullanici Zaten Takip Edilmiyor");
+        if(followingUser!="USER_NOT_FOUND") {
+            if(followService.isfollowed(followedUser,followingUser)) {
+                return ResponseEntity.ok("");
+            }
+            else return ResponseEntity.notFound().build();
         }
-        else return ResponseEntity.ok(follow);
-        return null;
+        return ResponseEntity.badRequest().body("");
+    }
+
+    @DeleteMapping("")
+    public ResponseEntity<?> unfollowUser(@RequestParam String followedUser, @CookieValue(name = "maxanmusicuser", defaultValue = "USER_NOT_FOUND") String followingUser)
+    {
+
+        if(followingUser!="USER_NOT_FOUND") {
+            if(followService.unfollow(followedUser,followingUser)) {
+                return ResponseEntity.ok("");
+            }
+            else return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.badRequest().body("");
     }
 }

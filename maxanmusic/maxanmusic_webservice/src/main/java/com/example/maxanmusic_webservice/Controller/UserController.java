@@ -1,9 +1,7 @@
 package com.example.maxanmusic_webservice.Controller;
 
 
-import com.example.maxanmusic_webservice.DTO.LoginForm;
-import com.example.maxanmusic_webservice.DTO.RegisterForm;
-import com.example.maxanmusic_webservice.DTO.UserProfileDTO;
+import com.example.maxanmusic_webservice.DTO.*;
 import com.example.maxanmusic_webservice.Entity.Track;
 import com.example.maxanmusic_webservice.Entity.User;
 import com.example.maxanmusic_webservice.Service.TrackService;
@@ -13,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 @RestController
 @RequestMapping("/users")
@@ -54,11 +53,11 @@ public class UserController {
     }
 
 
-    @GetMapping()
+    /*@GetMapping()
     public ResponseEntity<?> getAllUsers()
     {
         return ResponseEntity.ok(userService.GetAllUsers());
-    }
+    }*/
 
     @GetMapping("/{username}")
     public ResponseEntity<?> getUserByUsername(@PathVariable String username)
@@ -71,9 +70,50 @@ public class UserController {
         return ResponseEntity.notFound().build();
     }
 
-    @GetMapping("/{id}/tracks")
-    public ResponseEntity<?> getAllTracks(@PathVariable Long id)
+    @GetMapping("/{username}/tracks")
+    public ResponseEntity<?> getUsersAllTracks(@PathVariable String username,
+                                          @RequestParam(defaultValue = "0") Integer pageNo)
     {
-        return ResponseEntity.ok(userService.GetUsersTracksByUserId(id));
+        if((trackService.GetUsersTracksCountByUserName(username)-(pageNo*6))>0) {
+            List<Track> tracks = trackService.GetUsersTracksByUserName(username, pageNo);
+            return ResponseEntity.ok(trackService.trackToTrackShowcaseForm(tracks));
+        }
+        else return ResponseEntity.notFound().build();
+    }
+
+    @GetMapping("")
+    public ResponseEntity<?> getSearchedUsers(@RequestParam(defaultValue = "") String keyword,
+                                          @RequestParam(defaultValue = "0") Integer pageNo)
+    {
+        if(keyword!="") {
+            if ((userService.GetSearchedUserCountByKeyword(keyword) - (pageNo * 8)) > 0) {
+                List<User> users = userService.GetUsersByKeyword(keyword, pageNo);
+                return ResponseEntity.ok(userService.userListsToProfileDTOs(users));
+            } else return ResponseEntity.notFound().build();
+        }else return ResponseEntity.badRequest().body("");
+    }
+
+    @GetMapping("/liked-tracks")
+    public ResponseEntity<?> getLikedTrack(@CookieValue(name = "maxanmusicuser", defaultValue = "USER_NOT_FOUND") String user,@RequestParam(defaultValue = "0") Integer pageNo)
+    {
+        if(user!="USER_NOT_FOUND") {
+            if((trackService.GetLikedTracksCount(user)-(pageNo*8))>0) {
+                List<Track> tracks = trackService.getLikedTracks(user,pageNo);
+                return ResponseEntity.ok(trackService.trackToTrackShowcaseForm(tracks));
+            }
+            else return ResponseEntity.notFound().build();
+        }
+        else return ResponseEntity.badRequest().body("");
+    }
+
+    @PatchMapping("/{username}")
+    public ResponseEntity<?> EditTrack(@ModelAttribute UserProfileEditForm pI, @CookieValue(name = "maxanmusicuser", defaultValue = "USER_NOT_FOUND") String user, @PathVariable String username){
+        if(user!="USER_NOT_FOUND") {
+            if(userService.EditUser(pI,user,username)){
+                return ResponseEntity.ok("Profil düzenlendi.");
+            }
+            else return ResponseEntity.notFound().build();
+        }
+        else return ResponseEntity.badRequest().body("");
     }
 }
