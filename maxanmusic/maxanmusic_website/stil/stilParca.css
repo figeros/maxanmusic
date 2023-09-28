@@ -1,0 +1,175 @@
+.pbilgi{
+    display: flex;
+    flex-direction: column;
+}
+
+.pFoto{
+    width: 25%;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pFotocrcv{
+    aspect-ratio: 1;
+}
+
+.pFotocrcv > img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+
+.pAd{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    cursor: pointer;
+}
+
+.pOynat{
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 30%;
+}
+
+.pOynat > button {
+    aspect-ratio: 1 / 1;
+    width: 50px;
+    background-color: #dddddd;
+    border: none;
+}
+
+#oynatbar{
+    width: 50%;
+}
+
+.phakkinda{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto; 
+}
+
+.pAciklama{
+    text-align: center;
+}
+
+.pBegeni{
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 10px;
+}
+
+.pBegeni > div {
+    width: 50%;
+    text-align: center;
+}
+
+#begenBtn{
+    width: 30%;
+    aspect-ratio: 5/1;
+    margin: auto;
+    border: none;
+    background-color: #dddddd;
+    cursor: pointer;
+}
+
+.pyorum{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.yorumyaz{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px;
+    background-color: #dddddd;
+}
+
+#yeniyorumtext{
+    resize: none;
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    border: none;
+    aspect-ratio: 10/1;
+    background-color: #f6f6f6;
+}
+
+#yorum_gonder{
+    width: 30%;
+    aspect-ratio: 6/1;
+    margin-left: auto;
+    border: none;
+    background-color: #cccccc;
+    cursor: pointer;
+}
+
+.yorumlar{
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.yorumKutu{
+    width: 95%;
+    height: auto;
+    background-color: #bbbbbb;
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.profFotoDis{
+    width: 10%; 
+    padding: 10px;
+}
+
+.profFotoCerceve{
+    aspect-ratio: 1/1;  
+}
+
+.profFotoCerceve > img {   
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+
+.yorumDis{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: auto;
+}
+
+
+.k_Ad{
+    height: 18%;
+    padding-top: 2%;
+    padding-left: 10px; 
+
+}
+
+.k_Ad > b {
+    cursor: pointer;
+}
+
+.k_Yorum{
+    height: 80%;
+    padding-left: 10px;
+    padding-right: 10px;
+    overflow: hidden;
+    word-wrap: break-word;
+
+}

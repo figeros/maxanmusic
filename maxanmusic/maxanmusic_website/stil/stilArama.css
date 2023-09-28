@@ -1,0 +1,140 @@
+
+.ana_icerik{
+    display: flex;
+    flex-direction: column;
+}
+
+#aramabari{
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:10vb;
+    margin-bottom:10vb;
+}
+
+#bar{
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    width: 80%;
+    font-size: 16px;
+}
+
+#barBtn{
+    border: none;
+    cursor: pointer;
+    width: 20%;
+    background-color: #ff3535;
+    font-size: 18px;
+    color: white;
+}
+
+#kategori{
+    display: flex;  
+    flex-direction: row;
+    justify-content: center;
+}
+
+#kategori>div {
+    width: 50%;
+    text-align: center;
+}
+
+#kategori>div:hover{
+    cursor: pointer;
+}
+
+#kbtnp{
+    background-color:  #cccccc;
+}
+
+#kbtnk{
+    background-color:  #aaaaaa;
+}
+
+#sonuclar {
+    background-color: #cccccc;
+    padding-top: 10px;
+}
+
+#sonuclar>div{
+    background-color: #cccccc;
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+#sonuc_parca{
+    display: block;
+}
+
+#sonuc_kullanici{
+    display: none;
+}
+
+.icerik{
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    background-color: #ff9999;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.ibilgibolme{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.ifotobolme{
+    width: 20%;
+    padding: 10px;
+}
+
+.ifotocerceve{
+    height: 100%;;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ifotocerceve > img {
+    aspect-ratio: 1/1;
+    object-fit: fill;
+    width: 100%;
+    height: 100%;
+}
+
+.ibilgi_ana{
+    height: 70%;
+    margin: auto;
+    width: 95%;
+    padding-left: 5%;
+    text-align: left;
+}
+.ibilgi_alt{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 30%;
+}
+
+.ibilgi_alt1{
+    width: 50%;
+}
+
+.ibilgi_alt2{
+    width: 50%;
+}
+
+.ibilgi_ana > p{
+    overflow: hidden;
+    word-wrap: break-word;
+}
